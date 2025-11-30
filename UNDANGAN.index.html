@@ -76,7 +76,7 @@
     </div>
 
     <audio id="music" loop>
-        <source src="music.m4a" type="audio/mp4">
+        <source src="mp3.m4a" type="audio/mp4">
     </audio>
 
     <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
@@ -290,8 +290,8 @@
             }, 500);
 
             // Musik akan diputar di sini setelah tombol diklik
-            music.play().catch(error => {
-                console.log("Autoplay blocked, or file not found.");
+            music.play(mp3.m4a).catch(error => {
+                console.log("Autoplay");
             });
         }
 
@@ -352,4 +352,5 @@
         });
     </script>
 </body>
+
 </html>
