@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan: Dokja & Sooyoung</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    
+    <script>
+        // Konfigurasi Tailwind CSS
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // PALET ORV
+                        'orv-dark': '#0A0A0A',
+                        'orv-gray-bg': '#1C1C1C',
+                        'orv-text-light': '#FAFAFA',
+                        'orv-subtle-gray': '#3A3A3A',
+                        'orv-neon-blue': '#00FFFF',
+                        'orv-danger': '#FF4500',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS Tambahan */
+        .fade-in-up { animation: fadeInUp 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        html { scroll-behavior: smooth; }
+        body.no-scroll { overflow: hidden; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 40px; }
+        .gallery-item img {
+            width: 100%; height: 300px; object-fit: cover; display: block;
+            border: 1px solid var(--orv-subtle-gray); 
+            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.1); 
+            opacity: 0.8; transition: opacity 0.3s ease;
+        }
+        .gallery-item img:hover { opacity: 1; }
+    </style>
+</head>
+<body class="font-sans bg-orv-dark text-orv-text-light no-scroll antialiased selection:bg-orv-neon-blue selection:text-orv-dark">
+
+    <div id="cover" class="fixed inset-0 z-50 bg-orv-dark flex flex-col items-center justify-center text-center p-6 transition-transform duration-700 ease-in-out">
+        
+        <img src="wallpaper.jpeg" 
+             alt="Background Cover"
+             class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale brightness-50 z-0">
+        
+        <div class="relative z-10 space-y-6">
+            <p class="uppercase tracking-[0.2em] text-sm text-orv-neon-blue font-bold">The Final Scenario</p>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold text-orv-text-light mb-4" style="color: #00FFFF; text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF;">Dokja & Sooyoung</h1>
+            
+            <div class="h-px w-24 bg-orv-subtle-gray mx-auto my-6"></div>
+            
+            <p class="text-lg text-orv-text-light mb-8">Rabu, 15 Juli 2026</p>
+            
+            <button onclick="bukaUndangan()" class="group relative px-8 py-3 bg-orv-neon-blue text-orv-dark text-sm uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-xl font-bold">
+                <span class="flex items-center gap-2">
+                    <i class="fas fa-envelope-open"></i> BUKA UNDANGAN
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="music" loop>
+        <source src="music.m4a" type="audio/mp4">
+    </audio>
+
+    <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
+        
+        <section class="min-h-screen flex items-center justify-center bg-orv-dark py-20 px-4 relative overflow-hidden text-orv-text-light">
+            <div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-orv-dark to-transparent"></div>
+            <div class="text-center max-w-4xl mx-auto z-10" data-aos>
+                <p class="italic text-orv-neon-blue font-serif mb-4">Dear, Constellation</p>
+                <h2 class="font-serif text-4xl md:text-6xl text-orv-text-light mb-6">Kami Mengundang Anda</h2>
+                <p class="text-orv-text-light leading-relaxed max-w-lg mx-auto mb-10">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya."
+                </p>
+                
+                <div class="flex justify-center items-center gap-4 md:gap-8 font-serif text-orv-text-light">
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold">15</span>
+                        <span class="text-xs uppercase tracking-widest text-orv-neon-blue">Juli</span>
+                    </div>
+                    <div class="h-12 w-px bg-orv-subtle-gray"></div>
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold">2026</span>
+                        <span class="text-xs uppercase tracking-widest text-orv-neon-blue">Rabu</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 bg-orv-gray-bg text-orv-text-light">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-3xl md:text-4xl text-orv-text-light">Mempelai</h2>
+                    <div class="w-16 h-px bg-orv-subtle-gray mx-auto mt-4"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
+                    
+                    <div class="text-center group">
+                        <div class="w-48 h-48 md:w-64 md:h-64 mx-auto mb-6 overflow-hidden rounded-full border-4 border-orv-subtle-gray shadow-xl relative">
+                            <img src="image 7.jpeg" 
+                                alt="Groom" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0 opacity-70">
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-orv-text-light mb-2">Kim Dokja</h3>
+                        <p class="text-sm text-orv-neon-blue mb-4">Putra dari Bpk. Hades & Ibu Lee Sookyung</p>
+                        <a href="https://instagram.com/pria" target="_blank" class="inline-block text-orv-subtle-gray hover:text-orv-neon-blue transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+
+                    <div class="font-serif text-5xl text-orv-subtle-gray">&</div>
+
+                    <div class="text-center group">
+                        <div class="w-48 h-48 md:w-64 md:h-64 mx-auto mb-6 overflow-hidden rounded-full border-4 border-orv-subtle-gray shadow-xl relative">
+                            <img src="image 4.jpeg" 
+                                alt="Bride" 
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale hover:grayscale-0 opacity-70">
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-orv-text-light mb-2">Han Sooyoung</h3>
+                        <p class="text-sm text-orv-neon-blue mb-4">Putri dari Bpk. Han & Ibu Myung</p>
+                        <a href="https://instagram.com/wanita" target="_blank" class="inline-block text-orv-subtle-gray hover:text-orv-neon-blue transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4 bg-orv-dark text-orv-text-light">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="font-serif text-3xl md:text-4xl text-orv-text-light mb-12">Rangkaian Acara</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-orv-gray-bg p-8 md:p-10 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-orv-subtle-gray">
+                        <div class="text-4xl text-orv-neon-blue mb-4"><i class="fas fa-handshake"></i></div>
+                        <h3 class="font-serif text-2xl font-bold text-orv-text-light mb-2">Akad Nikah</h3>
+                        <p class="text-orv-neon-blue font-bold mb-4">08:00 - 10:00 WIB</p>
+                        <p class="text-orv-text-light text-sm leading-relaxed">
+                            Kerajaan Kecil<br>
+                            Jl. Merdeka No. 123, Star Stream
+                        </p>
+                        <a href="https://goo.gl/maps/link-akad" target="_blank" class="mt-6 inline-block text-xs uppercase tracking-widest text-orv-neon-blue border-b border-orv-neon-blue pb-1 hover:text-orv-danger hover:border-orv-danger transition-all">
+                            Lihat Lokasi
+                        </a>
+                    </div>
+
+                    <div class="bg-orv-gray-bg p-8 md:p-10 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-orv-subtle-gray">
+                        <div class="text-4xl text-orv-neon-blue mb-4"><i class="fas fa-glass-cheers"></i></div>
+                        <h3 class="font-serif text-2xl font-bold text-orv-text-light mb-2">Resepsi</h3>
+                        <p class="text-orv-neon-blue font-bold mb-4">11:00 - 14:00 WIB</p>
+                        <p class="text-orv-text-light text-sm leading-relaxed">
+                            Grand Ballroom Kerajaan Kecil<br>
+                            Jl. Asia Afrika No. 45, Star Stream
+                        </p>
+                        <a href="https://goo.gl/maps/link-resepsi" target="_blank" class="mt-6 inline-block text-xs uppercase tracking-widest text-orv-neon-blue border-b border-orv-neon-blue pb-1 hover:text-orv-danger hover:border-orv-danger transition-all">
+                            Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <h3 class="text-sm uppercase tracking-widest text-orv-subtle-gray mb-6">Scenario Timer</h3>
+                    <div class="flex justify-center gap-4 md:gap-8" id="countdown">
+                        <div class="bg-orv-gray-bg p-4 w-20 rounded shadow-sm border border-orv-subtle-gray">
+                            <span id="days" class="block text-2xl font-bold text-orv-neon-blue">00</span>
+                            <span class="text-xs text-orv-text-light">DAYS</span>
+                        </div>
+                        <div class="bg-orv-gray-bg p-4 w-20 rounded shadow-sm border border-orv-subtle-gray">
+                            <span id="hours" class="block text-2xl font-bold text-orv-neon-blue">00</span>
+                            <span class="text-xs text-orv-text-light">HOURS</span>
+                        </div>
+                        <div class="bg-orv-gray-bg p-4 w-20 rounded shadow-sm border border-orv-subtle-gray">
+                            <span id="minutes" class="block text-2xl font-bold text-orv-neon-blue">00</span>
+                            <span class="text-xs text-orv-text-light">MIN</span>
+                        </div>
+                        <div class="bg-orv-gray-bg p-4 w-20 rounded shadow-sm border border-orv-subtle-gray">
+                            <span id="seconds" class="block text-2xl font-bold text-orv-neon-blue">00</span>
+                            <span class="text-xs text-orv-text-light">SEC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-20 px-6 bg-orv-gray-bg text-orv-text-light">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-serif text-3xl md:text-4xl text-orv-text-light">Galeri Kenangan</h2>
+                    <div class="w-16 h-px bg-orv-neon-blue mx-auto mt-4"></div>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="image 5.jpeg" alt="Foto Prewed 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="image 2.jpeg" alt="Foto Prewed 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="image 6.jpeg" alt="Foto Prewed 3">
+                    </div>
+               
+                </div>
+                
+                <div class="text-center mt-12">
+                    <p class="text-sm text-orv-subtle-gray">#KimDokjaCompany #FinalChapter</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-10 bg-orv-dark">
+            <div class="w-full h-96 bg-orv-gray-bg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.833989352934!2d107.6191227!3d-6.9147444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnNTMuMSJTIDEwN8KwMzcnMDguOCJF!5e0!3m2!1sen!2sid!4v1635000000000!5m2!1sen!2sid" 
+                    width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(80%);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 bg-orv-gray-bg text-orv-text-light">
+            <div class="max-w-xl mx-auto bg-orv-dark p-8 md:p-12 rounded-lg shadow-lg border border-orv-subtle-gray">
+                <div class="text-center mb-8">
+                    <h2 class="font-serif text-3xl text-orv-text-light">RSVP & Ucapan</h2>
+                    <p class="text-orv-neon-blue text-sm mt-2">[ Constellation Confirmation ]</p>
+                </div>
+
+                <form id="rsvpForm" class="space-y-4" onsubmit="kirimPesan(event)">
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-orv-neon-blue mb-1">Nama Lengkap</label>
+                        <input type="text" required class="w-full border-b border-orv-subtle-gray bg-transparent py-2 focus:outline-none focus:border-orv-neon-blue text-orv-text-light transition-colors">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-orv-neon-blue mb-1">Status Kehadiran</label>
+                        <select class="w-full border-b border-orv-subtle-gray bg-transparent py-2 focus:outline-none focus:border-orv-neon-blue text-orv-text-light transition-colors">
+                            <option class="bg-orv-gray-bg text-orv-text-light" value="Hadir">Hadir (Participation Confirmed)</option>
+                            <option class="bg-orv-gray-bg text-orv-text-light" value="Mungkin Hadir">Mungkin Hadir (Checking Scenario)</option>
+                            <option class="bg-orv-gray-bg text-orv-text-light" value="Tidak Hadir">Tidak Hadir (Scenario Failure)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider text-orv-neon-blue mb-1">Pesan / Ucapan</label>
+                        <textarea rows="3" required class="w-full border-b border-orv-subtle-gray bg-transparent py-2 focus:outline-none focus:border-orv-neon-blue text-orv-text-light transition-colors resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-orv-neon-blue text-orv-dark py-3 mt-4 text-sm uppercase tracking-widest hover:bg-orv-danger transition-colors font-bold">
+                        [SEND MESSAGE]
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="bg-orv-dark py-10 text-center border-t border-orv-subtle-gray text-orv-text-light">
+            <h2 class="font-serif text-2xl text-orv-text-light mb-2">Kim Dokja & Han Sooyoung</h2>
+            <p class="text-orv-neon-blue text-xs uppercase tracking-widest mb-6">The story ends here.</p>
+            <p class="text-[10px] text-orv-subtle-gray">© 2025 Third Round: Final Scenario</p>
+        </footer>
+    </main>
+
+    <script>
+        // 1. Logika Buka Undangan
+        function bukaUndangan() {
+            const cover = document.getElementById('cover');
+            const mainContent = document.getElementById('main-content');
+            const music = document.getElementById('music');
+
+            cover.style.transform = 'translateY(-100%)';
+            document.body.classList.remove('no-scroll');
+
+            mainContent.classList.remove('hidden');
+            setTimeout(() => {
+                mainContent.classList.remove('opacity-0');
+            }, 500);
+
+            // Musik akan diputar di sini setelah tombol diklik
+            music.play().catch(error => {
+                console.log("Autoplay blocked, or file not found.");
+            });
+        }
+
+        // 2. Countdown Timer
+      
+        const weddingDate = new Date(2026, 7, 15, 8, 0, 0).getTime(); 
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<p class='text-orv-neon-blue'>[ The Scenario Ended ]</p>";
+            }
+        }, 1000);
+
+        // 3. Handle Form Submit (Demo Only)
+        function kirimPesan(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "CONFIRMATION RECEIVED!";
+            btn.classList.add('bg-green-600');
+            
+            setTimeout(() => {
+                e.target.reset();
+                btn.innerText = originalText;
+                btn.classList.remove('bg-green-600');
+                alert("[System Message] Confirmation berhasil diterima oleh Constellation. (Demo)");
+            }, 2000);
+        }
+
+        // 4. Simple Fade In Animation on Scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
